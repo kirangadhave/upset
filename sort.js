@@ -477,7 +477,7 @@ var updateState = function (parameter) {
 
 // external events that influence sort.js
 function bindEventsForSort() {
-    $(EventManager).bind("set-added", function (event, data) {
+    $(EventManager).on("set-added", function (event, data) {
         UpSetState.logicGroups.forEach(function(lg){
             lg.orClauses.forEach(function(orClause){
                 orClause[data.set.id] = {state:ctx.logicStates.DONTCARE};
@@ -487,7 +487,7 @@ function bindEventsForSort() {
 
     })
 
-    $(EventManager).bind("set-removed", function (event, data) {
+    $(EventManager).on("set-removed", function (event, data) {
         UpSetState.logicGroups.forEach(function(lg){
 
             lg.orClauses.forEach(function(orClause){

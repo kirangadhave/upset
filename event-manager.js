@@ -7,7 +7,7 @@ var EventManager = {};
 
 /** how to use:
 
- $(EventManager).bind("tabClicked", function() {
+ $(EventManager).on("tabClicked", function() {
     // do something
 });
 

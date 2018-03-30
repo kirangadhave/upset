@@ -10,15 +10,15 @@ var ElementViewerConfigurations = {
 };
 
 
-$(EventManager).bind("element-viewer-removed", function (event, data) {
+$(EventManager).on("element-viewer-removed", function (event, data) {
 });
 
 
-$(EventManager).bind("element-viewer-added", function (event, data) {
+$(EventManager).on("element-viewer-added", function (event, data) {
 });
 
 
-$(EventManager).bind("element-viewer-activated", function (event, data) {
+$(EventManager).on("element-viewer-activated", function (event, data) {
     elementViewers.renderViewer();
 });
 

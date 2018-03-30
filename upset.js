@@ -2089,7 +2089,7 @@ function UpSet(datasets) {
     }
 
     function bindEvents() {
-        $(EventManager).bind("item-selection-added", function (event, data) {
+        $(EventManager).on("item-selection-added", function (event, data) {
             //console.log("Selection was added to selection list with color " + selections.getColor(data.selection) + ' and ' + data.selection.items.length + ' items.');
 
             data.selection.mapToSubsets(subSets);
@@ -2099,7 +2099,7 @@ function UpSet(datasets) {
             elementViewers.renderViewer();
         });
 
-        $(EventManager).bind("item-selection-updated", function (event, data) {
+        $(EventManager).on("item-selection-updated", function (event, data) {
             //console.log('Selection was updated! New length is ' + data.selection.items.length + ' items.');
 
             data.selection.mapToSubsets(subSets);
@@ -2111,7 +2111,7 @@ function UpSet(datasets) {
             plotSetOverview();
         });
 
-        $(EventManager).bind("item-selection-removed", function (event, data) {
+        $(EventManager).on("item-selection-removed", function (event, data) {
             //console.log("Selection was removed from selection list.");
             data.selection.unmapFromSubsets(subSets);
 
@@ -2127,7 +2127,7 @@ function UpSet(datasets) {
             plotSetOverview();
         });
 
-        $(EventManager).bind("item-selection-activated", function (event, data) {
+        $(EventManager).on("item-selection-activated", function (event, data) {
             if (data.selection) {
                 //console.log('Selection ' + data.selection.id + ' was activated.');
 
@@ -2146,30 +2146,30 @@ function UpSet(datasets) {
             elementViewers.renderViewer();
         });
 
-        $(EventManager).bind("ui-resize", function (event, data) {
+        $(EventManager).on("ui-resize", function (event, data) {
             ctx.resizeSetView(data.newHeight, null)
 //            plot(Math.floor(data.newWidth * .66), Math.floor(data.newHeight));
             plotSetOverview();
         });
 
-        $(EventManager).bind("ui-vertical-resize", function (event, data) {
+        $(EventManager).on("ui-vertical-resize", function (event, data) {
 
             ctx.resizeSetView(data.newHeight, null)
 //            plot(undefined, Math.floor(data.newHeight));
             plotSetOverview();
         });
 
-//        $(EventManager).bind("ui-horizontal-resize", function (event, data) {
+//        $(EventManager).on("ui-horizontal-resize", function (event, data) {
 //            plot(Math.floor(data.newWidth * .66), undefined);
 //            plotSetOverview();
 //        });
 
-        $(EventManager).bind("loading-dataset-started", function (event, data) {
+        $(EventManager).on("loading-dataset-started", function (event, data) {
             $(".ui-fader").show();
             $("#data-loading-indicator").show();
         });
 
-        $(EventManager).bind("loading-dataset-finished", function (event, data) {
+        $(EventManager).on("loading-dataset-finished", function (event, data) {
             $(".ui-fader").fadeOut(1000);
             $("#data-loading-indicator").fadeOut(1000);
 
@@ -2177,7 +2177,7 @@ function UpSet(datasets) {
             elementViewers.renderViewer();
         });
 
-        $(EventManager).bind("set-added", function (event, data) {
+        $(EventManager).on("set-added", function (event, data) {
             if (usedSets.length === 2 || usedSets.length === 3) {
                 $("#venn-diagram-viewer").fadeIn(500);
                 venn.plot(undefined, usedSets.length);
@@ -2188,7 +2188,7 @@ function UpSet(datasets) {
             }
         });
 
-        $(EventManager).bind("set-removed", function (event, data) {
+        $(EventManager).on("set-removed", function (event, data) {
             if (usedSets.length === 2 || usedSets.length === 3) {
                 $("#venn-diagram-viewer").fadeIn(500);
                 venn.plot(undefined, usedSets.length);
@@ -2199,7 +2199,7 @@ function UpSet(datasets) {
             }
         });
 
-        $(EventManager).bind("vis-svg-resize", function (event, data) {
+        $(EventManager).on("vis-svg-resize", function (event, data) {
             //vis-svg-resize", { newWidth:+(leftWidth + (endX - startX)) });
             updateFrames(null, data.newWidth);
             updateHeaders()

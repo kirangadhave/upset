@@ -3,16 +3,16 @@
 */
 
 
-$(EventManager).bind("filter-removed", function (event, data) {
+$(EventManager).on("filter-removed", function (event, data) {
     selections.getActive().filterCollection.renderFilters();
 });
 
 
-$(EventManager).bind("filter-added", function (event, data) {
+$(EventManager).on("filter-added", function (event, data) {
 });
 
 
-$(EventManager).bind("filter-activated", function (event, data) {
+$(EventManager).on("filter-activated", function (event, data) {
 });
 
 var FilterConfigurations = {
